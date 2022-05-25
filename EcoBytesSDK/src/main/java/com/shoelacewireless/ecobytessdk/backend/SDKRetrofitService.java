@@ -52,15 +52,8 @@ public class SDKRetrofitService {
 
     public SDKBackendApi getApi() { return mApi;}
 
-//    public void setToken(String token) {
-//        mToken = token;
-//    }
-
     private SDKBackendApi initApi(Context context) {
 
-//        OkHttpClient httpClient = sslContext == null ?
-//                getSafeHttpClient(basicCredentials) :
-//                getUnsafeHttpClient(sslContext, basicCredentials);
 
         OkHttpClient httpClient = getUnsafeHttpClient(context);
 
@@ -104,22 +97,10 @@ public class SDKRetrofitService {
             sslContext.init(null, trustManagerFactory.getTrustManagers(), null);
 
             clientBuilder
-            //Interceptor for including Basic Auth header in every request
-//            .addInterceptor(chain -> {
-//                    //TODO: Add token authorization
-//                    Request req = chain.request().newBuilder().addHeader("Authorization", credentials).build();
-//                    return chain.proceed(req);
-//                })
 
                     .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagerFactory.getTrustManagers()[0]) //Overriding certificate verification for self-signed certificate
                     .hostnameVerifier((hostname, session) -> true); //Overriding hostname verification
 
-            /*TODO: Remove from sdk?
-            if (BuildConfig.DEBUG) {
-                HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
-                httpLoggingInterceptor.level(HttpLoggingInterceptor.Level.BODY);
-                clientBuilder.addInterceptor(httpLoggingInterceptor);
-            }*/
         } catch (Exception e) {
             e.printStackTrace();
         }
