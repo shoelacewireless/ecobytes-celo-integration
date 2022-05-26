@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">EcoBytesSDK</string>
+    <string name="nav_header_title">EcoBytesSDK</string>
+
+    <!--Server Codes-->
+    <string name="backend_error_no_communication">Failure communicating with EcoBytes backend.</string>
+    <string name="backend_error_000">An error occurred.</string>
+
+    <!--BACKEND URL TODO: should it be removed from here?-->
+    <string name="BACKEND_API_URL" translatable="false">backend_url</string>
+
+</resources>
